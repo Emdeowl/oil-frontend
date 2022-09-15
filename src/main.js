@@ -2,12 +2,13 @@ import { createApp, h } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 import { createApolloProvider } from "@vue/apollo-option";
 import apolloClient from "./vue-apollo";
+import Articles from "./containers/Articles";
 
 const apolloProvider = createApolloProvider({
   defaultClient: apolloClient,
 });
 
-const routes = [{ path: "/" }];
+const routes = [{ path: "/", component: Articles }];
 
 import App from "./App.vue";
 const router = createRouter({
