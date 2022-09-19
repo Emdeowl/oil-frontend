@@ -40,9 +40,9 @@ export default {
 
     data() {
          return {
-                    name: this.$route.params.id,
-                    curRecipe: {},
-                    bookmarkRecipes: JSON.parse(window.localStorage.getItem('bookmarks'))
+                name: this.$route.params.id,
+                curRecipe: {},
+                bookmarkRecipes: JSON.parse(window.localStorage.getItem('bookmarks'))
                 }
             },
     

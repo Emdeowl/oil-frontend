@@ -1,26 +1,15 @@
 import { createApp, h } from "vue";
-import { createRouter, createWebHashHistory } from "vue-router";
-import { createApolloProvider } from "@vue/apollo-option";
-import apolloClient from "./vue-apollo";
-import Articles from "./containers/Articles";
-
-const apolloProvider = createApolloProvider({
-  defaultClient: apolloClient,
-});
-
-const routes = [{ path: "/", component: Articles }];
-
+import axios from 'axios'
+import vueAxios from 'vue-axios'
+import store from './store'
 import App from "./App.vue";
-const router = createRouter({
-    // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
-    history: createWebHashHistory(),
-    routes, // short for `routes: routes`
-  });
+import VueProgress from 'vue-progress-path'
+import 'vue-progress-path/dist/vue-progress-path.css'
+import router from './router'
+
 
 const app = createApp({
   render: () => h(App),
 });
 
-app.use(router);
-app.use(apolloProvider);
-app.mount("#app");
+app.use(router, store, axios, vueAxios, VueProgress).mount('#app');
