@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Nav from "./components/OilNav.vue";
+import Nav from "@/components/OilNav.vue";
 
 export default {
   name:"App",

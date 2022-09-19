@@ -31,9 +31,7 @@ import Nav from '@/components/OilNav.vue'
 // import { mapGetters } from 'vuex'
 
 export default {
-    components:{
-    Nav
-  },
+    components:{Nav},
 
   data(){
     return{

@@ -6,15 +6,10 @@
                 <div>
                     <div>
                         <h1> 
-                            FIND THE
-                            <br>
-                            WORLD'S BEST
-                            <br>
-                            RECIPEE ONLINE
+                            오늘의 일기
                         </h1>
                         <router-link to="/explore">
-                            Search Recipes
-                            <font-awesome-icon :icon="['fas','arrow-right']"/>                        
+                            Search Recipes                     
                         </router-link>
                     </div>
                     <div>

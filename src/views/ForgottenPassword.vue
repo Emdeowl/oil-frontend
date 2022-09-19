@@ -22,7 +22,7 @@
 
 <script>
 export default {
-    name: "ForgotPassword",
+  name: "ForgottenPassword",
   data() {
     return {
       email: "",

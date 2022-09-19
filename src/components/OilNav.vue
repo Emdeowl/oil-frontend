@@ -1,52 +1,45 @@
 <template>
+  <div>
     <div>
-      <nav>
-        <div class="left">
-          <ul>
-            <li>
-              <a href="/">Oil</a>  <!--  /는 메인 페이지  -->
-            </li>
-          </ul>
-        </div>
-        <div class="right">
-          <ul>
-              <li v-for="category in categories.data" v-bind:key="category.id">
-                  <router-link
-                  :to="{ path: '/category/' + category.attribute.slug  }"
-                  :key="category.attributes.slug">
-                      {{ category.attributes.name }}
-                  </router-link>
-              </li>
-          </ul>
-        </div>
-      </nav>
+      <h1>오늘의 일기</h1>
     </div>
-  </template>
-  
-  <script>
-  import gql from "graphql-tag";
-  export default {
-      name:"OilNav",
-      data(){
-          return{
-              categories:[],
-          };
-      },
-      apollo:{
-          categories: gql` //GraphQL 쿼리의 응답으로 채워질 배열로 정의함
-              query Categories {
-                  categories {
-                      data {
-                          id
-                          attributes{
-                              slug
-                              name
-                          }
-                      }
-                  }
-              }`,
-      },
-  };
-  </script>
-  
-  <style></style>
+    <div>
+      <router-link to="/">HOME</router-link>
+      <router-link to="/explore">Search</router-link>
+      <router-link to="/register" v-if="!user">Sign up</router-link>
+      <router-link to="/login" v-if="!user">Login</router-link>
+      <router-link to="/boomarks" v-if="user">BookMark</router-link>
+      <router-link to="" v-if="user">{{ user.username }}</router-link>
+      <span @click="logout">
+        <router-link to="" v-if="user">LOGOUT</router-link>
+      </span>
+    </div>
+  </div>
+</template>
+
+<script>
+// import { mapGetters } from 'vuex'
+export default {
+  name: "OilNav",
+  data() {
+    return {
+      user: {},
+    };
+  },
+  mounted() {
+    // (*GET Rest API필요[UserData])
+    this.user = JSON.parse(window.localStorage.getItem("userData"));
+  },
+  methods: {
+    logout() {
+      // (*DELETE Rest API필요[userData, bookmark, jwt token])
+      window.localStorage.removeItem('jwt')
+      window.localStorage.removeItem('userData')
+      window.localStorage.removeItem('bookmarks')
+      this.$router.push('/login')
+    },
+  },
+};
+</script>
+
+<style></style>

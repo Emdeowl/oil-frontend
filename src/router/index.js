@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
 import Home from '../views/OilHome.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
@@ -9,7 +8,7 @@ import Bookmarks from '../views/Bookmarks.vue'
 import BookmarkId from '../views/BookmarkID.vue'
 import ForgotPassword from '../views/ForgottenPassword.vue'
 import ResetPassword from '../views/ResetPassword.vue'
-Vue.use(VueRouter)
+
 const routes = [
   {
     path: '/',
@@ -57,9 +56,8 @@ const routes = [
     component: ResetPassword
   }
 ]
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
 export default router
